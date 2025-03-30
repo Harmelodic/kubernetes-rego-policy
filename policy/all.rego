@@ -19,7 +19,7 @@ all_recommended_labels if {
 deny contains msg if {
 	not all_recommended_labels
 	msg = sprintf(
-	    "%s %s must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels",
+	    "%s '%s' must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels",
 	    [input.kind, name]
 	)
 }
