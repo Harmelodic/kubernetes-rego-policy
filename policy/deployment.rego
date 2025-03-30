@@ -10,7 +10,7 @@ deny contains msg if {
     input.kind == "Deployment"
     input.spec.replicas < 1
 
-    msg = sprintf("Deployment '%s': If spec.replicas is defined, it must be set to 1 or more", [name])
+    msg = sprintf("Deployment '%s': If spec.replicas is defined, it must be set to 1 or more to ensure deployment has pods.", [name])
 }
 
 deny contains msg if {
