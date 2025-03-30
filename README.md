@@ -4,28 +4,22 @@ Policy for linting Kubernetes resources.
 
 Compatible with [Conftest](https://www.conftest.dev).
 
-## Run with Conftest locally
+## Use with Conftest
 
-Assuming you have this repo next to your project in a directory structure, like so:
-
-> code/  
->   kubernetes-rego-policy/  
->   your-project/
-
-In `your-project` run:
+Pull the policy from GitHub (which copies the policy into `policy/`, the default directory used by Conftest):
 
 ```bash
-conftest test --policy ../kubernetes-rego-policy/policy path/to/your/resource.yaml
+conftest pull git::https://github.com/Harmelodic/kubernetes-rego-policy.git//policy
+```
+
+Then use Conftest to validate your resources against your policy:
+
+```bash
+conftest test resources.yaml
 ```
 
 Or if you build your resources with Kustomize:
 
 ```bash
-kustomize build path/to/kustomization | conftest test --policy ../kubernetes-rego-policy/policy -
-```
-
-## Pull with Conftest
-
-```bash
-conftest pull git::https://github.com/Harmelodic/kubernetes-rego-policy.git//policy
+kustomize build path/to/kustomization | conftest test -
 ```
