@@ -15,7 +15,7 @@ conftest pull git::https://github.com/Harmelodic/kubernetes-rego-policy.git//pol
 Then use Conftest to validate your resources against your policy:
 
 ```bash
-conftest test resources.yaml
+conftest test path/to/resource.yaml
 ```
 
 Or if you build your resources with Kustomize:
