@@ -1,6 +1,6 @@
 # kubernetes-rego-policy
 
-Policy for testing Kubernetes resources.
+Policy for linting Kubernetes resources.
 
 Compatible with [Conftest](https://www.conftest.dev).
 
