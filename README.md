@@ -8,8 +8,8 @@ Compatible with [Conftest](https://www.conftest.dev).
 
 Assuming you have this repo next to your project in a directory structure, like so:
 
-> code/
->   kubernetes-rego-policy/
+> code/  
+>   kubernetes-rego-policy/  
 >   your-project/
 
 In `your-project` run:
