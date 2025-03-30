@@ -8,14 +8,21 @@ name := input.metadata.name
 
 deny contains msg if {
     input.kind == "Deployment"
+    input.spec.replicas < 1
+
+    msg = sprintf("Deployment %s must have at least 1 replica.", [name])
+}
+
+deny contains msg if {
+    input.kind == "Deployment"
     input.spec.strategy.type != "RollingUpdate"
 
-    msg = sprintf("%s should have RollingUpdate strategy type for zero down-time rollouts", [name])
+    msg = sprintf("Deployment %s must have RollingUpdate strategy type for zero down-time rollouts.", [name])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	not input.spec.template.spec.securityContext.runAsNonRoot
 
-	msg = sprintf("Containers must not run as root in Deployment %s", [name])
+	msg = sprintf("Deployment %s must have pod security context configured to run as non root.", [name])
 }
