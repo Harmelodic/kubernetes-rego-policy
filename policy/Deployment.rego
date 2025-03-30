@@ -39,28 +39,28 @@ deny contains msg if {
     input.kind == "Deployment"
     input.spec.template.metadata.name
 
-    msg = sprintf("Deployment '%s': spec.template.spec.metadata.name must not be set. Let the Deployment handle this to eliminate human error.", [name])
+    msg = sprintf("Deployment '%s': spec.template.metadata.name must not be set. Let the Deployment handle this to eliminate human error.", [name])
 }
 
 deny contains msg if {
     input.kind == "Deployment"
     input.spec.template.metadata.generateName
 
-    msg = sprintf("Deployment '%s': spec.template.spec.metadata.generateName must not be set. Let the Deployment handle this to eliminate human error.", [name])
+    msg = sprintf("Deployment '%s': spec.template.metadata.generateName must not be set. Let the Deployment handle this to eliminate human error.", [name])
 }
 
 deny contains msg if {
     input.kind == "Deployment"
     input.spec.template.metadata.namespace
 
-    msg = sprintf("Deployment '%s': spec.template.spec.metadata.namespace must not be set. Let the Deployment handle this to eliminate human error.", [name])
+    msg = sprintf("Deployment '%s': spec.template.metadata.namespace must not be set. Let the Deployment handle this to eliminate human error.", [name])
 }
 
 deny contains msg if {
     input.kind == "Deployment"
     input.spec.template.metadata.annotations
 
-    msg = sprintf("Deployment '%s': spec.template.spec.metadata.annotations must not be set. Let the Deployment handle this to eliminate human error.", [name])
+    msg = sprintf("Deployment '%s': spec.template.metadata.annotations must not be set. Let the Deployment handle this to eliminate human error.", [name])
 }
 
 deny contains msg if {
