@@ -36,6 +36,34 @@ deny contains msg if {
 }
 
 deny contains msg if {
+    input.kind == "Deployment"
+    input.spec.template.metadata.name
+
+    msg = sprintf("Deployment '%s': spec.template.spec.metadata.name must not be set. Let the Deployment handle this to eliminate human error.", [name])
+}
+
+deny contains msg if {
+    input.kind == "Deployment"
+    input.spec.template.metadata.generateName
+
+    msg = sprintf("Deployment '%s': spec.template.spec.metadata.generateName must not be set. Let the Deployment handle this to eliminate human error.", [name])
+}
+
+deny contains msg if {
+    input.kind == "Deployment"
+    input.spec.template.metadata.namespace
+
+    msg = sprintf("Deployment '%s': spec.template.spec.metadata.namespace must not be set. Let the Deployment handle this to eliminate human error.", [name])
+}
+
+deny contains msg if {
+    input.kind == "Deployment"
+    input.spec.template.metadata.annotations
+
+    msg = sprintf("Deployment '%s': spec.template.spec.metadata.annotations must not be set. Let the Deployment handle this to eliminate human error.", [name])
+}
+
+deny contains msg if {
 	input.kind == "Deployment"
 	not input.spec.template.spec.securityContext.runAsNonRoot
 
