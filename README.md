@@ -18,7 +18,7 @@ Then use Conftest to validate your resources against your policy:
 conftest test path/to/resource.yaml
 ```
 
-Or if you build your resources with Kustomize:
+Or if you use Kustomize, test all resources in the Kustomization with:
 
 ```bash
 kustomize build path/to/kustomization | conftest test -
