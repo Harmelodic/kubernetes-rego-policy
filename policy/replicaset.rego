@@ -9,5 +9,5 @@ name := input.metadata.name
 deny contains msg if {
     input.kind == "ReplicaSet"
 
-    msg = sprintf("ReplicaSet '%s' has been defined. Do not manage ReplicaSets manually. Use a controller (e.g Deployment) instead.", [name])
+    msg = sprintf("ReplicaSet '%s': ReplicaSet resources must not be defined manually. Use a controller (e.g Deployment) to manage a ReplicaSet.", [name])
 }
