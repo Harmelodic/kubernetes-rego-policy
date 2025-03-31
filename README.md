@@ -2,7 +2,9 @@
 
 Policy for linting Kubernetes resources.
 
-Compatible with [Conftest](https://www.conftest.dev).
+Compatible with [Conftest](https://www.conftest.dev) (should therefore be compatible with OPA, but untested).
+
+Currently only lints for a small subset of Kubernetes resources. Over time, I hope it covers everything.
 
 ## Use with Conftest
 
