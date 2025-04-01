@@ -3,6 +3,11 @@
 Feel free to submit a PR to add rules but please take note of the style that rules are written & files are
 made, then follow that style.
 
+## Testing
+
+1. Write Rego unit tests.
+2. Run: `conftest verify`.
+
 ## Working with Rego
 
 Rego is weird and takes a little bit of getting used to.
