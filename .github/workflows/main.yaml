@@ -22,3 +22,15 @@ jobs:
           tar xzf conftest_${LATEST_VERSION}_${SYSTEM}_${ARCH}.tar.gz
           sudo mv conftest /usr/local/bin
       - run: conftest verify
+
+  regal-lint:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - name: Install Regal as per https://github.com/StyraInc/regal/
+        run: |
+          curl -L -o regal "https://github.com/StyraInc/regal/releases/latest/download/regal_Linux_x86_64"
+          chmod +x regal
+      - run: regal lint policy/
