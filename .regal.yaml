@@ -2,3 +2,5 @@ rules:
   idiomatic:
     no-defined-entrypoint:
       level: ignore # All policy files are entrypoints
+    directory-package-mismatch:
+      level: ignore # conftest expects all policy to be in `policy` directory, in package `main`.
