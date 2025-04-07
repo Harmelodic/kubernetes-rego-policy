@@ -10,14 +10,22 @@ deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.replicas < 1
 
-	msg = sprintf("Deployment '%s': If spec.replicas is defined, it must be set to 1 or more to ensure deployment has pods.", [name])
+	details := {
+		"issue": "spec.replicas is defined, but is set to less than 1. This will result in downtime.",
+		"suggestion": "Set spec.replicas to 1 or more to ensure deployment actually has pods.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.strategy.type != "RollingUpdate"
 
-	msg = sprintf("Deployment '%s': If spec.strategy.type is defined, it must be set to 'RollingUpdate' for zero downtime updates. Default is 'RollingUpdate'.", [name])
+	details := {
+		"issue": "spec.strategy.type is not set to 'RollingUpdate' for zero downtime updates.",
+		"suggestion": "Set spec.strategy.type to 'RollingUpdate' (default) for zero downtime updates.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
@@ -25,47 +33,75 @@ deny contains msg if {
 	not input.spec.replicas
 	input.spec.strategy.rollingUpdate.maxUnavailable >= 1
 
-	msg = sprintf("Deployment '%s': If spec.strategy.rollingUpdate.maxUnavailable is defined and spec.replicas is undefined, maxUnavailable cannot greater than or equal to 1 (default spec.replicas value) else all replicas could be unavailable during a rolling update, resulting in downtime.", [name])
+	details := {
+		"issue": "maxUnavailable >= replicas (default 1). This could result in downtime during a rolling update.",
+		"suggestion": "Ensure spec.strategy.rollingUpdate.maxUnavailable is less than spec.replicas.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.strategy.rollingUpdate.maxUnavailable >= input.spec.replicas
 
-	msg = sprintf("Deployment '%s': If spec.strategy.rollingUpdate.maxUnavailable and spec.replicas are defined, then maxUnavailable cannot be greater or equal to replicas else all replicas could be unavailable during a rolling update, resulting in downtime.", [name])
+	details := {
+		"issue": "maxUnavailable >= replicas. This could result in downtime during a rolling update.",
+		"suggestion": "Ensure spec.strategy.rollingUpdate.maxUnavailable is less than spec.replicas.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.template.metadata.name
 
-	msg = sprintf("Deployment '%s': spec.template.metadata.name must not be set. Let the Deployment handle this to eliminate human error.", [name])
+	details := {
+		"issue": "spec.template.metadata.name must not be set.",
+		"suggestion": "Let the Deployment handle Pod name(s) to eliminate human error.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.template.metadata.generateName
 
-	msg = sprintf("Deployment '%s': spec.template.metadata.generateName must not be set. Let the Deployment handle this to eliminate human error.", [name])
+	details := {
+		"issue": "spec.template.metadata.generateName must not be set.",
+		"suggestion": "Let the Deployment handle Pod name(s) to eliminate human error.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.template.metadata.namespace
 
-	msg = sprintf("Deployment '%s': spec.template.metadata.namespace must not be set. Let the Deployment handle this to eliminate human error.", [name])
+	details := {
+		"issue": "spec.template.metadata.namespace must not be set.",
+		"suggestion": "Let the Deployment handle Pod namespace to eliminate human error.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.template.metadata.annotations
 
-	msg = sprintf("Deployment '%s': spec.template.metadata.annotations must not be set. Let the Deployment handle this to eliminate human error.", [name])
+	details := {
+		"issue": "spec.template.metadata.annotations must not be set.",
+		"suggestion": "Let the Deployment handle Pod annotation(s) to eliminate human error.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }
 
 deny contains msg if {
 	input.kind == "Deployment"
 	not input.spec.template.spec.securityContext.runAsNonRoot
 
-	msg = sprintf("Deployment '%s': spec.template.spec.securityContext.runAsNonRoot must be defined, and set to true.", [name])
+	details := {
+		"issue": "spec.template.spec.securityContext.runAsNonRoot is not defined, or set to false.",
+		"suggestion": "spec.template.spec.securityContext.runAsNonRoot must be defined and set to true.",
+	}
+	msg := sprintf("Deployment '%s': %s %s", [name, details.issue, details.suggestion])
 }

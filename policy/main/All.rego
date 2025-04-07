@@ -18,8 +18,10 @@ all_recommended_labels if {
 
 deny contains msg if {
 	not all_recommended_labels
-	msg = sprintf(
-		"%s '%s': All defined resources must include Kubernetes recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#labels",
-		[input.kind, name],
-	)
+
+	details := {
+		"issue": "All defined resources must include Kubernetes recommended labels.",
+		"suggestion": "Add labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/",
+	}
+	msg := sprintf("Resource '%s': %s %s", [name, details.issue, details.suggestion])
 }
