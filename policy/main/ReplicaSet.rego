@@ -2,10 +2,11 @@ package main
 
 import rego.v1
 
-# Policy applicable to kind: ReplicaSet
-
 name := input.metadata.name
 
+# METADATA
+# scope: rule
+# description: Policy applicable to kind "ReplicaSet"
 deny contains msg if {
 	input.kind == "ReplicaSet"
 

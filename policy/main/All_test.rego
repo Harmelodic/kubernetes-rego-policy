@@ -1,9 +1,10 @@
-package main
+package main_test
 
+import data.main
 import rego.v1
 
 test_allow_labels if {
-	count(deny) == 0 with input as {
+	count(main.deny) == 0 with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -20,7 +21,7 @@ test_allow_labels if {
 }
 
 test_missing_label_name if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -36,7 +37,7 @@ test_missing_label_name if {
 }
 
 test_missing_label_instance if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -52,7 +53,7 @@ test_missing_label_instance if {
 }
 
 test_missing_label_version if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -68,7 +69,7 @@ test_missing_label_version if {
 }
 
 test_missing_label_component if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -84,7 +85,7 @@ test_missing_label_component if {
 }
 
 test_missing_label_part_of if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -100,7 +101,7 @@ test_missing_label_part_of if {
 }
 
 test_missing_label_managed_by if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -116,7 +117,7 @@ test_missing_label_managed_by if {
 }
 
 test_missing_label_multiple if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {
 			"name": "test_input",
@@ -130,7 +131,7 @@ test_missing_label_multiple if {
 }
 
 test_missing_label_all if {
-	deny with input as {
+	main.deny with input as {
 		"kind": "TestAny",
 		"metadata": {"name": "test_input"},
 	}

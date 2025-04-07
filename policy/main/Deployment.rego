@@ -2,10 +2,11 @@ package main
 
 import rego.v1
 
-# Policy applicable to kind: Deployment
-
 name := input.metadata.name
 
+# METADATA
+# scope: rule
+# description: Policy applicable to kind "Deployment"
 deny contains msg if {
 	input.kind == "Deployment"
 	input.spec.replicas < 1

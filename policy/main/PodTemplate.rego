@@ -2,10 +2,11 @@ package main
 
 import rego.v1
 
-# Policy applicable to kind: PodTemplate
-
 name := input.metadata.name
 
+# METADATA
+# scope: rule
+# description: Policy applicable to kind "PodTemplate"
 deny contains msg if {
 	input.kind == "PodTemplate"
 
