@@ -33,7 +33,7 @@ Unsupported resources will eventually be supported.
 | SUPPORTED?   | KIND                             | API VERSION                     | NAMESPACED |
 |--------------|----------------------------------|---------------------------------|------------|
 |              | APIService                       | apiregistration.k8s.io/v1       | false      |
-| Yes          | Binding                          | v1                              | true       |
+| Yes (dont'!) | Binding                          | v1                              | true       |
 |              | CertificateSigningRequest        | certificates.k8s.io/v1          | false      |
 |              | ClusterRoleBinding               | rbac.authorization.k8s.io/v1    | false      |
 |              | ClusterRole                      | rbac.authorization.k8s.io/v1    | false      |
@@ -47,15 +47,15 @@ Unsupported resources will eventually be supported.
 |              | CustomResourceDefinition         | apiextensions.k8s.io/v1         | false      |
 |              | DaemonSet                        | apps/v1                         | true       |
 | Yes          | Deployment                       | apps/v1                         | true       |
-| Yes          | Endpoints                        | v1                              | true       |
-| Yes          | EndpointSlice                    | discovery.k8s.io/v1             | true       |
+| Yes (don't!) | Endpoints                        | v1                              | true       |
+| Yes (don't!) | EndpointSlice                    | discovery.k8s.io/v1             | true       |
 |              | Event                            | v1                              | true       |
 |              | Event                            | events.k8s.io/v1                | true       |
 |              | FlowSchema                       | flowcontrol.apiserver.k8s.io/v1 | false      |
 |              | HorizontalPodAutoscaler          | autoscaling/v2                  | true       |
 |              | IngressClass                     | networking.k8s.io/v1            | false      |
 |              | Ingress                          | networking.k8s.io/v1            | true       |
-| Yes          | Job                              | batch/v1                        | true       |
+| Yes (dont'!) | Job                              | batch/v1                        | true       |
 |              | Lease                            | coordination.k8s.io/v1          | true       |
 |              | LimitRange                       | v1                              | true       |
 |              | LocalSubjectAccessReview         | authorization.k8s.io/v1         | true       |
