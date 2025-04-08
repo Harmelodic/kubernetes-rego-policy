@@ -14,5 +14,5 @@ deny contains msg if {
 		"issue": "Binding resources must not be used - deprecated since 1.7.",
 		"suggestion": "Use the bindings subresource of pods instead.",
 	}
-	msg := sprintf("Pod '%s': %s %s", [name, details.issue, details.suggestion])
+	msg := sprintf("Binding '%s': %s %s", [name, details.issue, details.suggestion])
 }
