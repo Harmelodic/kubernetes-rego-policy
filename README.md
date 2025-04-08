@@ -33,7 +33,7 @@ Unsupported resources will eventually be supported.
 | SUPPORTED?   | KIND                             | API VERSION                     | NAMESPACED |
 |--------------|----------------------------------|---------------------------------|------------|
 |              | APIService                       | apiregistration.k8s.io/v1       | false      |
-|              | Binding                          | v1                              | true       |
+| Yes          | Binding                          | v1                              | true       |
 |              | CertificateSigningRequest        | certificates.k8s.io/v1          | false      |
 |              | ClusterRoleBinding               | rbac.authorization.k8s.io/v1    | false      |
 |              | ClusterRole                      | rbac.authorization.k8s.io/v1    | false      |
@@ -55,7 +55,7 @@ Unsupported resources will eventually be supported.
 |              | HorizontalPodAutoscaler          | autoscaling/v2                  | true       |
 |              | IngressClass                     | networking.k8s.io/v1            | false      |
 |              | Ingress                          | networking.k8s.io/v1            | true       |
-|              | Job                              | batch/v1                        | true       |
+| Yes          | Job                              | batch/v1                        | true       |
 |              | Lease                            | coordination.k8s.io/v1          | true       |
 |              | LimitRange                       | v1                              | true       |
 |              | LocalSubjectAccessReview         | authorization.k8s.io/v1         | true       |
