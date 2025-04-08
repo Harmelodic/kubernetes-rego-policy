@@ -47,7 +47,7 @@ Unsupported resources will eventually be supported.
 |              | CustomResourceDefinition         | apiextensions.k8s.io/v1         | false      |
 |              | DaemonSet                        | apps/v1                         | true       |
 | Yes          | Deployment                       | apps/v1                         | true       |
-|              | Endpoints                        | v1                              | true       |
+| Yes          | Endpoints                        | v1                              | true       |
 |              | EndpointSlice                    | discovery.k8s.io/v1             | true       |
 |              | Event                            | v1                              | true       |
 |              | Event                            | events.k8s.io/v1                | true       |
