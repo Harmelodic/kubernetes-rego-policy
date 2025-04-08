@@ -8,5 +8,5 @@ test_allow_deployment if {
 }
 
 test_replicas_less_than_one if {
-    main.deny with input as parse_config_file("../test-resources/deployment-replicas-less-than-one.yaml")
+	main.deny with input as parse_config_file("../test-resources/deployment-replicas-less-than-one.yaml")
 }
