@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: PodTemplate
+metadata:
+  name: pod-template
+template:
+  spec:
+    containers: []
