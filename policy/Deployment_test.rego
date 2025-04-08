@@ -32,25 +32,25 @@ test_max_unavailable_greater_than_replicas if {
 }
 
 test_with_pod_template_name if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-template-name.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-template-name.yaml")
 }
 
 test_with_pod_template_generate_name if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-template-generate-name.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-template-generate-name.yaml")
 }
 
 test_with_pod_template_namespace if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-template-namespace.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-template-namespace.yaml")
 }
 
 test_with_pod_template_annotations if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-template-annotations.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-template-annotations.yaml")
 }
 
 test_with_pod_security_context_run_as_root if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-security-context-run-as-root.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-security-context-run-as-root.yaml")
 }
 
 test_with_pod_security_context_no_run_as_non_root if {
-	main.deny with input as parse_config_file("../cases/deployment-with-pod-security-context-no-run-as-non-root.yaml")
+	main.deny with input as parse_config_file("../cases/deployment-pod-security-context-no-run-as-non-root.yaml")
 }
