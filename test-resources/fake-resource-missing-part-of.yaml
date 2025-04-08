@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Fake
+metadata:
+  name: test-input
+  labels:
+    app.kubernetes.io/name: thing
+    app.kubernetes.io/instance: thing-1
+    app.kubernetes.io/version: 1.0.0
+    app.kubernetes.io/component: deployment
+    app.kubernetes.io/managed-by: kustomize

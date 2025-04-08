@@ -4,135 +4,37 @@ import data.main
 import rego.v1
 
 test_allow_labels if {
-	count(main.deny) == 0 with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/part-of": "thing-system",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	count(main.deny) == 0 with input as parse_config_file("../test-resources/fake-resource-good.yaml")
 }
 
 test_missing_label_name if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/part-of": "thing-system",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-name.yaml")
 }
 
 test_missing_label_instance if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/part-of": "thing-system",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-instance.yaml")
 }
 
 test_missing_label_version if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/part-of": "thing-system",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-version.yaml")
 }
 
 test_missing_label_component if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/part-of": "thing-system",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-component.yaml")
 }
 
 test_missing_label_part_of if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/managed-by": "kustomize",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-part-of.yaml")
 }
 
 test_missing_label_managed_by if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-				"app.kubernetes.io/component": "deployment",
-				"app.kubernetes.io/part-of": "thing-system",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-managed-by.yaml")
 }
 
 test_missing_label_multiple if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {
-			"name": "test_input",
-			"labels": {
-				"app.kubernetes.io/name": "thing",
-				"app.kubernetes.io/instance": "thing-1",
-				"app.kubernetes.io/version": "1.0.0",
-			},
-		},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-multiple.yaml")
 }
 
 test_missing_label_all if {
-	main.deny with input as {
-		"kind": "TestAny",
-		"metadata": {"name": "test_input"},
-	}
+	main.deny with input as parse_config_file("../test-resources/fake-resource-missing-all.yaml")
 }
