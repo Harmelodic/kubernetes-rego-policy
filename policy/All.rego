@@ -7,7 +7,7 @@ name := input.metadata.name
 # METADATA
 # scope: rule
 # description: Policy applicable to all Kubernetes resources
-deny contains msg if {
+deny_missing_labels contains msg if {
 	not input.metadata.labels["app.kubernetes.io/name"]
 	not input.metadata.labels["app.kubernetes.io/instance"]
 	not input.metadata.labels["app.kubernetes.io/version"]
