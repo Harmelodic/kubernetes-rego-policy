@@ -14,7 +14,7 @@ Pull the policy from GitHub (which copies the policy into `policy/`, the default
 conftest pull git::https://github.com/Harmelodic/kubernetes-rego-policy.git//policy
 ```
 
-Then use Conftest to validate your resources against your policy:
+Then use Conftest to validate your resources against the policy:
 
 ```bash
 conftest test path/to/resource.yaml
