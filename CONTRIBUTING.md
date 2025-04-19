@@ -3,6 +3,14 @@
 Feel free to submit a PR to add rules but please take note of the style that rules are written & files are made, then
 follow that style.
 
+## Linting
+
+Use [Regal](https://docs.styra.com/regal) to lint Rego policy:
+
+```bash
+regal lint policy/
+```
+
 ## Testing
 
 1. Write Rego unit tests.
