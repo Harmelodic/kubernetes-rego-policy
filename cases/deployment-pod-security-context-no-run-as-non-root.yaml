@@ -43,7 +43,7 @@ spec:
         fsGroup: 2000
       containers:
         - name: test-input
-          image: test-input:v1.0.0
+          image: nginx:latest
           imagePullPolicy: Always
           ports:
             - name: http
