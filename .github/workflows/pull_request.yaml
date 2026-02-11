@@ -14,10 +14,5 @@ jobs:
   verify-rego-policy:
     uses: harmelodic/workflows/.github/workflows/verify-rego-policy.yaml@3e87e7e7de1ff4d92b99d775909982d9b9a5da99
 
-  yamllint-cases:
-    permissions:
-      contents: 'read'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
-      - run: yamllint cases .yamllint.yaml
+  verify-all-yaml: # Will actually do the whole project, but this is for: `cases`.
+    uses: harmelodic/workflows/.github/workflows/verify-project-yaml.yaml@3e87e7e7de1ff4d92b99d775909982d9b9a5da99
