@@ -9,10 +9,10 @@ on:
 
 jobs:
   verify-github-workflows:
-    uses: harmelodic/workflows/.github/workflows/verify-github-workflows.yaml@613ac589c4da38cc96bf4a5341e972c9e08809db
+    uses: harmelodic/workflows/.github/workflows/verify-github-workflows.yaml@131488b43dd9c37f98926fdfe0db7b3cc56f0dc9
 
   verify-rego-policy:
-    uses: harmelodic/workflows/.github/workflows/verify-rego-policy.yaml@613ac589c4da38cc96bf4a5341e972c9e08809db
+    uses: harmelodic/workflows/.github/workflows/verify-rego-policy.yaml@131488b43dd9c37f98926fdfe0db7b3cc56f0dc9
 
   verify-all-yaml: # Will actually do the whole project, but this is for: `cases`.
-    uses: harmelodic/workflows/.github/workflows/verify-project-yaml.yaml@613ac589c4da38cc96bf4a5341e972c9e08809db
+    uses: harmelodic/workflows/.github/workflows/verify-project-yaml.yaml@131488b43dd9c37f98926fdfe0db7b3cc56f0dc9
